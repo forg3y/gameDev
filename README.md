@@ -1,0 +1,2 @@
+Hello! This is a git repo to back up all the work I've been doing for my CMSC 395 Course: Game Development (Oct. 18, 2018). The game is tentatively titled "Give me Strength" and is centered around a geiving widow/widower whose significant other was killed by an ancient evil, and their quest for revenge. Game is extremely unfinished and has a lot of work to go. Please do not steal this work, I'd be very sad. Thanks!
+-Trevor
