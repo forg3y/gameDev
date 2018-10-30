@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CharController : MonoBehaviour {
 
 	[SerializeField]
-	float moveSpeed = 10f;
+	float moveSpeed = 0.1f;
 	
 	public Text countText;
 
@@ -13,6 +13,12 @@ public class CharController : MonoBehaviour {
 	private Rigidbody rb;
 	// private Vector3 rb_EulerAngleVelocity;
 	private int count;
+
+	Vector3 upVelocity = new Vector3(0.1f, 0.0f, 0.1f);
+	Vector3 downVelocity = new Vector3(-0.1f, 0.0f, -0.1f);
+	Vector3 leftVelocity = new Vector3(-0.1f, 0.0f, 0.1f);
+	Vector3 rightVelocity = new Vector3(0.1f, 0.0f, -0.1f);
+
 
 	// Use this for initialization
 	void Start () {
@@ -42,10 +48,33 @@ public class CharController : MonoBehaviour {
 		rb.MoveRotation(quatRotation);
 		//
         if (Input.GetKey(KeyCode.UpArrow)) {
-        	rb.transform.position += Vector3.left*0.1f/**Time.deltaTime*/;
+        	// up and right gives right
+        	rb.transform.position += upVelocity;
+        	// rb.transform.position += Vector3.forward*0.1f;
+        	// rb.transform.position += Vector3.left*(-0.1f);
+
+        	/**Time.deltaTime*/
         	//rb.MovePosition(transform.position+Vector3.left*.1f);
         	//rb.MovePosition(transform.position + transform.position * Time.deltaTime);
     	}
+        if (Input.GetKey(KeyCode.DownArrow)) {
+        	// down and left gives down
+        	// rb.transform.position += Vector3.forward*(-0.1f);
+        	// rb.transform.position += Vector3.left*(0.1f);
+        	rb.transform.position += downVelocity;
+
+        }
+        if (Input.GetKey(KeyCode.LeftArrow)) {
+        	// up and left gives left
+        	// rb.transform.position += Vector3.forward*0.1f;       	
+        	// rb.transform.position += Vector3.left*0.1f;
+        	rb.transform.position += leftVelocity;
+        }
+        if (Input.GetKey(KeyCode.RightArrow)) {
+        	// rb.transform.position += Vector3.left*(-0.1f);
+        	rb.transform.position += rightVelocity;
+        
+        }        
     }
 
   //       if (Input.GetKey(KeyCode.DownArrow))
